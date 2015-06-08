@@ -1,8 +1,11 @@
 ---
 # tasks for selinux role
 
-- name: Configure SELinux for host
+- name: Configure SELinux for host persistently
   selinux: >
     state={{ role_selinux_state }}
     policy={{ role_selinux_policy }}
     conf={{ role_selinux_conf }}
+
+- name: Set SELinux state for this session
+  command: /usr/sbin/setenforce {{ role_selinux_state }}
