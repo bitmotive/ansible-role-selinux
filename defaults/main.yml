@@ -1,0 +1,11 @@
+---
+# defaults file for selinux role
+
+# Override to enable/disable selinux on this host
+role_selinux_state: 'enforcing'
+
+# Override to change the selinux policy of this host
+role_selinux_policy: 'targeted'
+
+# Override to change the selinux configuration file path
+role_selinux_conf: '/etc/selinux/config'

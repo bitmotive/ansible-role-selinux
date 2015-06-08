@@ -1,0 +1,8 @@
+---
+# tasks for selinux role
+
+- name: Configure SELinux for host
+  selinux: >
+    state={{ role_selinux_state }}
+    policy={{ role_selinux_policy }}
+    conf={{ role_selinux_conf }}
