@@ -7,5 +7,16 @@
     policy={{ role_selinux_policy }}
     conf={{ role_selinux_conf }}
 
+- name: restart machine
+  command: shutdown -r now "Ansible updates triggered"
+  async: 0
+  poll: 0
+  ignore_errors: true
+
+- name: waiting for server to come back
+  local_action: wait_for host={{ ansible_ssh_host }}
+                state=started
+  sudo: false
+
 - name: Set SELinux state for this session
   command: /usr/sbin/setenforce {{ role_selinux_state }}
